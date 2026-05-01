@@ -1,314 +1,200 @@
 <template>
-  <div class="footer-top">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="support">هفت روز هفته از ۸ صبح تا ۱۲ شب پاسخگو هستیم</div>
-
-        <div class="col">
-          <h3>دسترسی سریع</h3>
-          <a href="#">درباره ما</a>
-          <a href="#">بلاگ</a>
-          <a href="#">تماس با ما</a>
-          <a href="#">خدمات پس از فروش</a>
+  <!-- TOP -->
+  <div class="bg-white border-t border-gray-200 py-16 rtl">
+    <div class="max-w-[1200px] mx-auto px-6 lg:pr-24 lg:pl-16">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[minmax(260px,1.4fr)_1fr_1fr_1fr] gap-8 lg:gap-20 items-start"
+      >
+        <!-- support -->
+        <div
+          class="text-gray-500 text-sm leading-8 pt-0 lg:pt-[125px] text-center lg:text-right sm:col-span-2 lg:col-span-1 lg:whitespace-nowrap"
+        >
+          هفت روز هفته از ۸ صبح تا ۱۲ شب پاسخگو هستیم
         </div>
 
-        <div class="col">
-          <h3>راهنمای سایت</h3>
-          <a href="#">قوانین و مقررات</a>
-          <a href="#">دریافت مشاوره</a>
-          <a href="#">انتقادات و پیشنهادات</a>
+        <!-- col 1 -->
+        <div
+          class="flex flex-col gap-2 text-center sm:text-right items-center sm:items-start"
+        >
+          <h3 class="text-lg font-bold text-gray-800 mb-3">دسترسی سریع</h3>
+
+          <a
+            href="#"
+            class="text-sm text-gray-500 transition-all duration-300 hover:text-[#ff2e63] hover:-translate-x-1"
+          >
+            درباره ما
+          </a>
+
+          <a
+            href="#"
+            class="text-sm text-gray-500 transition-all duration-300 hover:text-[#ff2e63] hover:-translate-x-1"
+          >
+            بلاگ
+          </a>
+
+          <a
+            href="#"
+            class="text-sm text-gray-500 transition-all duration-300 hover:text-[#ff2e63] hover:-translate-x-1"
+          >
+            تماس با ما
+          </a>
+
+          <a
+            href="#"
+            class="text-sm text-gray-500 transition-all duration-300 hover:text-[#ff2e63] hover:-translate-x-1"
+          >
+            خدمات پس از فروش
+          </a>
         </div>
 
-        <div class="col social-col">
-          <h3>شبکه‌های اجتماعی</h3>
+        <!-- col 2 -->
+        <div
+          class="flex flex-col gap-2 text-center sm:text-right items-center sm:items-start"
+        >
+          <h3 class="text-lg font-bold text-gray-800 mb-3">راهنمای سایت</h3>
 
-          <a href="#" class="social-item">
-            <div class="icon-wrapper">
+          <a
+            href="#"
+            class="text-sm text-gray-500 transition-all duration-300 hover:text-[#ff2e63] hover:-translate-x-1"
+          >
+            قوانین و مقررات
+          </a>
+
+          <a
+            href="#"
+            class="text-sm text-gray-500 transition-all duration-300 hover:text-[#ff2e63] hover:-translate-x-1"
+          >
+            دریافت مشاوره
+          </a>
+
+          <a
+            href="#"
+            class="text-sm text-gray-500 transition-all duration-300 hover:text-[#ff2e63] hover:-translate-x-1"
+          >
+            انتقادات و پیشنهادات
+          </a>
+        </div>
+
+        <!-- col 3 Social Icons -->
+        <div
+          class="flex flex-col gap-2 text-center sm:text-right items-center sm:items-start"
+        >
+          <h3 class="text-lg font-bold text-gray-800 mb-3">شبکه‌های اجتماعی</h3>
+
+          <!-- Telegram -->
+          <a
+            href="#"
+            class="group inline-flex items-center gap-3 justify-center sm:justify-start transform transition-transform duration-300 ease-out will-change-transform hover:scale-[1.05]"
+          >
+            <div
+              class="w-9 h-9 rounded-full bg-[#eef1f6] text-gray-600 flex items-center justify-center text-base transition-colors duration-300 group-hover:bg-[#ff2e63] group-hover:text-white"
+            >
               <font-awesome-icon :icon="['fab', 'telegram']" />
             </div>
-            <span>تلگرام</span>
+
+            <span
+              class="text-gray-600 transition-colors duration-300 group-hover:text-[#ff2e63]"
+            >
+              تلگرام
+            </span>
           </a>
 
-          <a href="#" class="social-item">
-            <div class="icon-wrapper">
+          <!-- Instagram -->
+          <a
+            href="#"
+            class="group inline-flex items-center gap-3 justify-center sm:justify-start transform transition-transform duration-300 ease-out will-change-transform hover:scale-[1.05]"
+          >
+            <div
+              class="w-9 h-9 rounded-full bg-[#eef1f6] text-gray-600 flex items-center justify-center text-base transition-colors duration-300 group-hover:bg-[#ff2e63] group-hover:text-white"
+            >
               <font-awesome-icon :icon="['fab', 'instagram']" />
             </div>
-            <span>اینستاگرام</span>
+
+            <span
+              class="text-gray-600 transition-colors duration-300 group-hover:text-[#ff2e63]"
+            >
+              اینستاگرام
+            </span>
           </a>
 
-          <a href="#" class="social-item">
-            <div class="icon-wrapper">
+          <!-- LinkedIn -->
+          <a
+            href="#"
+            class="group inline-flex items-center gap-3 justify-center sm:justify-start transform transition-transform duration-300 ease-out will-change-transform hover:scale-[1.05]"
+          >
+            <div
+              class="w-9 h-9 rounded-full bg-[#eef1f6] text-gray-600 flex items-center justify-center text-base transition-colors duration-300 group-hover:bg-[#ff2e63] group-hover:text-white"
+            >
               <font-awesome-icon :icon="['fab', 'linkedin']" />
             </div>
-            <span>لینکدین</span>
+
+            <span
+              class="text-gray-600 transition-colors duration-300 group-hover:text-[#ff2e63]"
+            >
+              لینکدین
+            </span>
           </a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="footer-bottom">
-    <div class="container bottom-wrapper">
-      <div class="center">
-        <p class="copyright">
+  <!-- BOTTOM -->
+  <div class="bg-[#f6f6f6] py-9 rtl">
+    <div
+      class="max-w-[1200px] mx-auto px-6 flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-5 text-center"
+    >
+      <div class="flex-1 w-full max-w-lg lg:max-w-none">
+        <p class="text-xs text-gray-500 mb-4 leading-7">
           تمامی حقوق مادی و معنوی این وبسایت متعلق به میباشد و هر گونه کپی
           برداری پیگرد قانونی دارد
         </p>
 
-        <div class="socials">
-          <a><font-awesome-icon :icon="['fab', 'linkedin']" /></a>
-          <a><font-awesome-icon :icon="['fab', 'youtube']" /></a>
-          <a><font-awesome-icon :icon="['fab', 'twitter']" /></a>
-          <a><font-awesome-icon :icon="['fab', 'instagram']" /></a>
-          <a><font-awesome-icon :icon="['fab', 'telegram']" /></a>
+        <div class="flex justify-center gap-3 flex-wrap">
+          <a
+            class="w-10 h-10 rounded-full bg-[#ff2e63] flex items-center justify-center text-white text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <font-awesome-icon :icon="['fab', 'linkedin']" />
+          </a>
+
+          <a
+            class="w-10 h-10 rounded-full bg-[#ff2e63] flex items-center justify-center text-white text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <font-awesome-icon :icon="['fab', 'youtube']" />
+          </a>
+
+          <a
+            class="w-10 h-10 rounded-full bg-[#ff2e63] flex items-center justify-center text-white text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <font-awesome-icon :icon="['fab', 'twitter']" />
+          </a>
+
+          <a
+            class="w-10 h-10 rounded-full bg-[#ff2e63] flex items-center justify-center text-white text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <font-awesome-icon :icon="['fab', 'instagram']" />
+          </a>
+
+          <a
+            class="w-10 h-10 rounded-full bg-[#ff2e63] flex items-center justify-center text-white text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <font-awesome-icon :icon="['fab', 'telegram']" />
+          </a>
         </div>
       </div>
 
-      <div class="certificates">
-        <img src="/images/samandehi.png" alt="samandehi" />
-        <img src="/images/enamad.png" alt="enamad" />
+      <div class="flex gap-4 justify-center lg:translate-x-24">
+        <img
+          src="/images/samandehi.png"
+          class="w-16 bg-white p-2 rounded-md shadow"
+          alt="samandehi"
+        />
+        <img
+          src="/images/enamad.png"
+          class="w-16 bg-white p-2 rounded-md shadow"
+          alt="enamad"
+        />
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-/* container */
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 24px;
-}
-
-/* ================= */
-/* TOP */
-/* ================= */
-
-.footer-top {
-  background: #fff;
-  padding: 72px 0 64px;
-  direction: rtl;
-  border-top: 1px solid #e5e7eb;
-}
-
-/* grid */
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: minmax(260px, 1.4fr) repeat(3, 1fr);
-  gap: 80px;
-  align-items: start;
-}
-
-/* support */
-
-.support {
-  font-size: 14px;
-  color: #6b7280;
-  line-height: 2;
-  padding-top: 135px;
-}
-
-/* columns */
-
-.col {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.col h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: #1f2937;
-}
-
-.col a {
-  font-size: 14px;
-  color: #6b7280;
-  text-decoration: none;
-  transition: 0.25s;
-}
-
-.col a:hover {
-  color: #ff2e63;
-  transform: translateX(-4px);
-}
-
-.col a.active {
-  color: #ff2e63;
-  font-weight: 600;
-}
-
-/* social items */
-
-.social-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.icon-wrapper {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #eef1f6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.25s;
-  font-size: 16px;
-  color: #4b5563;
-}
-
-.social-item:hover .icon-wrapper {
-  background: #ff2e63;
-  color: white;
-  transform: scale(1.05);
-}
-
-/* ================= */
-/* BOTTOM */
-/* ================= */
-
-.footer-bottom {
-  background: #f6f6f6;
-  padding: 36px 0;
-  direction: rtl;
-}
-
-/* wrapper */
-
-.bottom-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-/* center text */
-
-.center {
-  text-align: center;
-  flex: 1;
-}
-
-/* certificates */
-
-.certificates {
-  display: flex;
-  gap: 14px;
-}
-
-.certificates img {
-  width: 64px;
-  padding: 6px;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-}
-
-/* copyright */
-
-.copyright {
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 16px;
-  line-height: 1.9;
-}
-
-/* socials */
-
-.socials {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.socials a {
-  width: 38px;
-  height: 38px;
-  background: #ff2e63;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 17px;
-  transition: 0.25s;
-}
-
-.socials a:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* فقط دسکتاپ */
-@media (min-width: 1024px) {
-  .footer-top .container {
-    padding-right: 100px;
-    padding-left: 24px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .certificates {
-    transform: translateX(100px);
-  }
-}
-
-/* Tablet */
-@media (max-width: 1024px) {
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-  }
-
-  .support {
-    grid-column: 1/-1;
-    text-align: center;
-    padding-top: 0;
-  }
-
-  .bottom-wrapper {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .certificates {
-    justify-content: center;
-  }
-}
-
-/* Mobile */
-@media (max-width: 640px) {
-  .container {
-    padding: 0 120px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    justify-items: center;
-  }
-
-  .col {
-    align-items: center;
-    text-align: center;
-  }
-  .support {
-    text-align: center;
-  }
-
-  .social-item {
-    justify-content: center;
-  }
-
-  .socials {
-    flex-wrap: wrap;
-  }
-}
-</style>

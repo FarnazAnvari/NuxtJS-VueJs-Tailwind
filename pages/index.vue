@@ -1,11 +1,14 @@
 <template>
-  <div class="page">
+  <div dir="rtl" class="min-h-screen flex flex-col bg-[#f5f6fa]">
     <Header />
 
-    <div class="container">
-      <div class="layout">
+    <div class="max-w-[1300px] mx-auto w-full p-6 flex-1">
+      <div
+        dir="rtl"
+        class="grid grid-cols-1 md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[260px_minmax(0,1fr)] gap-6"
+      >
         <!-- sidebar -->
-        <aside class="sidebar">
+        <aside dir="rtl" class="h-fit md:sticky md:top-5">
           <SidebarFilter
             v-model:search="search"
             v-model:sort="sort"
@@ -13,55 +16,75 @@
             v-model:availableOnly="availableOnly"
           />
         </aside>
-
         <!-- content -->
-        <main class="content">
-          <div class="topbar">
-            <span class="topbar-title">فیلترهای اعمال شده</span>
+        <main dir="rtl" class="flex flex-col min-w-0 overflow-hidden">
+          <!-- topbar -->
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between bg-white rounded-2xl px-5 py-3 mb-6 gap-3"
+          >
+            <span class="text-sm text-[#333]"> فیلترهای اعمال شده </span>
 
-            <div class="filters">
+            <div class="flex gap-2 flex-wrap">
               <!-- سرچ -->
-              <span v-if="search" class="tag" @click="search = ''">
-                <font-awesome-icon icon="magnifying-glass" />
+              <span
+                v-if="search"
+                @click="search = ''"
+                class="flex items-center gap-1 text-xs px-3 py-1.5 rounded-full bg-[#ffe8f0] text-[#ff2c6d] cursor-pointer transition hover:bg-[#ff2c6d] hover:text-white"
+              >
+                <font-awesome-icon
+                  icon="magnifying-glass"
+                  class="w-3.5 h-3.5"
+                />
                 <span>{{ search }}</span>
-                <span class="tag-close">✕</span>
+                <span class="mr-auto text-sm">✕</span>
               </span>
 
-              <!-- دسته‌های انتخاب‌شده -->
+              <!-- دسته‌ها -->
               <span
                 v-for="cat in category"
                 :key="cat"
-                class="tag"
                 @click="removeCategory(cat)"
+                class="flex items-center gap-1 text-xs px-3 py-1.5 rounded-full bg-[#ffe8f0] text-[#ff2c6d] cursor-pointer transition hover:bg-[#ff2c6d] hover:text-white"
               >
-                <font-awesome-icon :icon="getCategoryIcon(cat)" />
+                <font-awesome-icon
+                  :icon="getCategoryIcon(cat)"
+                  class="w-3.5 h-3.5"
+                />
                 <span>{{ getCategoryName(cat) }}</span>
-                <span class="tag-close">✕</span>
+                <span class="mr-auto text-sm">✕</span>
               </span>
 
               <!-- فقط موجود -->
               <span
                 v-if="availableOnly"
-                class="tag"
                 @click="availableOnly = false"
+                class="flex items-center gap-1 text-xs px-3 py-1.5 rounded-full bg-[#ffe8f0] text-[#ff2c6d] cursor-pointer transition hover:bg-[#ff2c6d] hover:text-white"
               >
-                <font-awesome-icon icon="check-circle" />
+                <font-awesome-icon icon="check-circle" class="w-3.5 h-3.5" />
                 <span>درب های موجود</span>
-                <span class="tag-close">✕</span>
+                <span class="mr-auto text-sm">✕</span>
               </span>
             </div>
           </div>
 
           <!-- loading -->
-          <div v-if="pending" class="loading">در حال دریافت محصولات...</div>
+          <div v-if="pending" class="text-center py-16 text-gray-500">
+            در حال دریافت محصولات...
+          </div>
 
           <!-- empty -->
-          <div v-else-if="!filteredProducts.length" class="empty">
+          <div
+            v-else-if="!filteredProducts.length"
+            class="text-center py-16 text-gray-500"
+          >
             محصولی یافت نشد
           </div>
 
           <!-- products -->
-          <div v-else class="products">
+          <div
+            v-else
+            class="grid gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3"
+          >
             <ProductCard
               v-for="item in filteredProducts"
               :key="item.id"
@@ -169,131 +192,3 @@ const getCategoryIcon = (cat) => {
   }
 };
 </script>
-
-<style scoped>
-.page {
-  background: #f5f6fa;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  max-width: 1400px;
-  margin: auto;
-  padding: 24px;
-  flex: 1;
-}
-
-.layout {
-  display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 24px;
-}
-
-.sidebar {
-  position: sticky;
-  top: 20px;
-  height: fit-content;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  overflow: hidden;
-}
-
-/* topbar */
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
-  border-radius: 16px;
-  padding: 14px 20px;
-  margin-bottom: 24px;
-}
-
-.topbar-title {
-  font-size: 14px;
-  color: #333;
-}
-
-/* filters */
-.filters {
-  display: flex;
-  gap: 10px;
-}
-
-.tag {
-  background: #ffe8f0;
-  color: #ff2c6d;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.tag:hover {
-  background: #ff2c6d;
-  color: white;
-}
-
-.tag :deep(svg) {
-  width: 14px;
-  height: 14px;
-}
-
-/* ضربدر چپ */
-.tag-close {
-  margin-right: auto;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-/* products */
-.products {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-/* states */
-.loading,
-.empty {
-  text-align: center;
-  padding: 60px;
-  color: #666;
-}
-
-@media (max-width: 1024px) {
-  .layout {
-    grid-template-columns: 220px 1fr;
-  }
-  .products {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-  .products {
-    grid-template-columns: 1fr;
-  }
-  .topbar {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  .sidebar {
-    position: static !important;
-  }
-}
-</style>

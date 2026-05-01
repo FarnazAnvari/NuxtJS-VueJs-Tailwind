@@ -1,11 +1,14 @@
 <template>
-  <aside class="sidebar">
+  <aside class="w-full flex flex-col gap-4 sticky top-5 h-fit">
     <!-- Search -->
-    <div class="card">
-      <h3 class="title">فیلتر و جستجو</h3>
+    <div class="bg-white p-4 rounded-2xl">
+      <h3 class="text-sm font-semibold mb-3">فیلتر و جستجو</h3>
 
-      <div class="search-box">
-        <div class="search-icon">
+      <div
+        class="flex items-center h-10 border-2 border-[#ff2c6d] rounded-2xl px-3 bg-white gap-2"
+      >
+        <div class="flex items-center justify-center">
+          <!-- search icon -->
           <svg viewBox="0 0 24 24" width="18" height="18">
             <circle
               cx="11"
@@ -27,18 +30,21 @@
           </svg>
         </div>
 
-        <span class="divider"></span>
+        <span class="w-px h-5 bg-gray-200"></span>
 
-        <div class="input-wrapper">
+        <div class="relative flex-1">
           <input
             v-model="search"
             type="text"
-            name="search"
-            id="search"
+            class="w-full bg-transparent outline-none text-sm text-right placeholder:text-gray-400 pr-1"
             placeholder="دو لنگه"
           />
 
-          <button v-if="search" class="clear-btn" @click="search = ''">
+          <button
+            v-if="search"
+            @click="search = ''"
+            class="absolute left-0 top-1/2 -translate-y-1/2 bg-[#ffe5ed] w-5 h-5 flex items-center justify-center rounded-full cursor-pointer"
+          >
             <svg viewBox="0 0 24 24" width="14" height="14">
               <path
                 d="M6 6L18 18M18 6L6 18"
@@ -51,29 +57,43 @@
         </div>
       </div>
 
-      <button class="search-btn">جستجو</button>
+      <button
+        class="mt-3 w-full h-10 rounded-xl bg-gradient-to-r from-[#ff0057] to-[#ff2c6d] text-white text-sm"
+      >
+        جستجو
+      </button>
     </div>
 
     <!-- Available Toggle -->
-
-    <div class="toggle-row">
+    <div
+      class="bg-white p-4 rounded-2xl flex items-center justify-between text-sm"
+    >
       <span>درب‌های موجود</span>
 
-      <label class="switch">
-        <input type="checkbox" name="availableOnly" v-model="availableOnly" />
-        <span class="slider"></span>
+      <label class="relative w-10 h-5 cursor-pointer">
+        <input type="checkbox" v-model="availableOnly" class="peer hidden" />
+
+        <span
+          class="absolute inset-0 bg-gray-300 rounded-full transition-all peer-checked:bg-[#ff2c6d]"
+        ></span>
+
+        <span
+          class="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-white transition-all peer-checked:translate-x-[-18px]"
+        ></span>
       </label>
     </div>
 
     <!-- Sort -->
-
-    <div class="card">
-      <div class="section-header" @click="sortOpen = !sortOpen">
+    <div class="bg-white p-4 rounded-2xl">
+      <div
+        class="flex justify-between items-center text-sm font-semibold cursor-pointer"
+        @click="sortOpen = !sortOpen"
+      >
         <span>مرتب سازی</span>
 
         <svg
-          class="arrow"
-          :class="{ rotate: sortOpen }"
+          class="transition-transform duration-200"
+          :class="{ 'rotate-180': sortOpen }"
           width="18"
           height="18"
           viewBox="0 0 24 24"
@@ -90,27 +110,40 @@
 
       <transition name="accordion">
         <div v-show="sortOpen">
-          <label class="radio-item">
-            <input type="radio" name="sort" value="low" v-model="sort" />
-            <span class="custom-radio"></span>
+          <label class="flex items-center gap-2 mt-2 text-xs">
+            <input type="radio" class="hidden" value="low" v-model="sort" />
+            <span
+              class="w-4 h-4 border-2 border-gray-400 rounded-full relative radio-dot"
+            ></span>
             تعداد: کم به زیاد
           </label>
 
-          <label class="radio-item">
-            <input type="radio" name="sort" value="high" v-model="sort" />
-            <span class="custom-radio"></span>
+          <label class="flex items-center gap-2 mt-2 text-xs">
+            <input type="radio" class="hidden" value="high" v-model="sort" />
+            <span
+              class="w-4 h-4 border-2 border-gray-400 rounded-full relative radio-dot"
+            ></span>
             تعداد: زیاد به کم
           </label>
 
-          <label class="radio-item">
-            <input type="radio" name="sort" value="rankHigh" v-model="sort" />
-            <span class="custom-radio"></span>
+          <label class="flex items-center gap-2 mt-2 text-xs">
+            <input
+              type="radio"
+              class="hidden"
+              value="rankHigh"
+              v-model="sort"
+            />
+            <span
+              class="w-4 h-4 border-2 border-gray-400 rounded-full relative radio-dot"
+            ></span>
             رتبه: زیاد به کم
           </label>
 
-          <label class="radio-item">
-            <input type="radio" name="sort" value="rankLow" v-model="sort" />
-            <span class="custom-radio"></span>
+          <label class="flex items-center gap-2 mt-2 text-xs">
+            <input type="radio" class="hidden" value="rankLow" v-model="sort" />
+            <span
+              class="w-4 h-4 border-2 border-gray-400 rounded-full relative radio-dot"
+            ></span>
             رتبه: کم به زیاد
           </label>
         </div>
@@ -118,14 +151,16 @@
     </div>
 
     <!-- Categories -->
-
-    <div class="card">
-      <div class="section-header" @click="categoryOpen = !categoryOpen">
+    <div class="bg-white p-4 rounded-2xl">
+      <div
+        class="flex justify-between items-center text-sm font-semibold cursor-pointer"
+        @click="categoryOpen = !categoryOpen"
+      >
         <span>دسته بندی</span>
 
         <svg
-          class="arrow"
-          :class="{ rotate: categoryOpen }"
+          class="transition-transform duration-200"
+          :class="{ 'rotate-180': categoryOpen }"
           width="18"
           height="18"
           viewBox="0 0 24 24"
@@ -142,67 +177,76 @@
 
       <transition name="accordion">
         <div v-show="categoryOpen">
-          <label class="checkbox-item">
-            <div class="right">
+          <!-- item -->
+          <label class="flex justify-between items-center mt-3 text-sm">
+            <div class="flex items-center gap-2">
               <input
                 type="checkbox"
-                name="category"
+                class="hidden"
                 value="house"
                 v-model="category"
               />
-
-              <span class="custom-checkbox"></span>
-
+              <span
+                class="w-4 h-4 border-2 border-gray-400 rounded-md flex items-center justify-center checkbox-box"
+              ></span>
               <span>مسکن و ساختمان</span>
             </div>
 
             <span
-              class="badge"
-              :class="category.includes('house') ? 'pink' : 'dark'"
+              class="min-w-[26px] h-[26px] flex items-center justify-center text-white text-xs rounded-md"
+              :class="
+                category.includes('house') ? 'bg-[#ff2c6d]' : 'bg-[#1e2430]'
+              "
             >
               ۱۲
             </span>
           </label>
 
-          <label class="checkbox-item">
-            <div class="right">
+          <!-- item -->
+          <label class="flex justify-between items-center mt-3 text-sm">
+            <div class="flex items-center gap-2">
               <input
                 type="checkbox"
-                name="category"
+                class="hidden"
                 value="health"
                 v-model="category"
               />
-
-              <span class="custom-checkbox"></span>
-
+              <span
+                class="w-4 h-4 border-2 border-gray-400 rounded-md flex items-center justify-center checkbox-box"
+              ></span>
               <span>بهداشت و درمان</span>
             </div>
 
             <span
-              class="badge"
-              :class="category.includes('health') ? 'pink' : 'dark'"
+              class="min-w-[26px] h-[26px] flex items-center justify-center text-white text-xs rounded-md"
+              :class="
+                category.includes('health') ? 'bg-[#ff2c6d]' : 'bg-[#1e2430]'
+              "
             >
               ۲۳
             </span>
           </label>
 
-          <label class="checkbox-item">
-            <div class="right">
+          <!-- item -->
+          <label class="flex justify-between items-center mt-3 text-sm">
+            <div class="flex items-center gap-2">
               <input
                 type="checkbox"
-                name="category"
+                class="hidden"
                 value="industry"
                 v-model="category"
               />
-
-              <span class="custom-checkbox"></span>
-
+              <span
+                class="w-4 h-4 border-2 border-gray-400 rounded-md flex items-center justify-center checkbox-box"
+              ></span>
               <span>صنعتی و کارخانه</span>
             </div>
 
             <span
-              class="badge"
-              :class="category.includes('industry') ? 'pink' : 'dark'"
+              class="min-w-[26px] h-[26px] flex items-center justify-center text-white text-xs rounded-md"
+              :class="
+                category.includes('industry') ? 'bg-[#ff2c6d]' : 'bg-[#1e2430]'
+              "
             >
               ۴
             </span>
@@ -258,303 +302,34 @@ const categoryOpen = ref(true);
 </script>
 
 <style scoped>
-.sidebar {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  position: sticky;
-  top: 20px;
-  height: fit-content;
-}
-
-/* cards */
-
-.card {
-  background: white;
-  padding: 16px;
-  border-radius: 18px;
-}
-
-.title {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-/* search */
-
-.search-box {
-  display: flex;
-  align-items: center;
-  height: 38px;
-  border: 2px solid #ff2c6d;
-  border-radius: 18px;
-  padding: 0 14px;
-  background: white;
-  gap: 10px;
-}
-
-/* input */
-.input-wrapper {
-  position: relative;
-  flex: 1;
-}
-/* input */
-
-.input-wrapper input {
-  width: 100%;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  background: transparent;
-  padding-left: 26px;
-  text-align: right;
-}
-.input-wrapper input::placeholder {
-  color: #8b97a6;
-}
-
-.search-box input {
-  flex: 1;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  background: transparent;
-  text-align: right;
-}
-
-.search-box input::placeholder {
-  color: #8b97a6;
-}
-
-/* divider */
-.divider {
-  width: 1px;
-  height: 22px;
-  background: #e6e6e6;
-}
-
-/* search icon */
-
-.search-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* clear button */
-
-.clear-btn {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: #ffe5ed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-/* button */
-
-.search-btn {
-  margin-top: 14px;
-  width: 100%;
-  height: 38px;
-  border-radius: 16px;
-  background: linear-gradient(90deg, #ff0057, #ff2c6d);
-  color: white;
-  border: none;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-/* toggle */
-
-.toggle-row {
-  background: white;
-  padding: 14px 16px;
-  border-radius: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* switch */
-
-.switch {
-  position: relative;
-  width: 38px;
-  height: 20px;
-}
-
-.switch input {
-  display: none;
-}
-
-.slider {
-  position: absolute;
-  inset: 0;
-  background: #ccc;
-  border-radius: 20px;
-}
-
-.slider::before {
+/* radio checked dot */
+.radio-dot::after {
   content: "";
   position: absolute;
-  width: 16px;
-  height: 16px;
-  background: white;
-  border-radius: 50%;
-  top: 2px;
-  right: 2px;
-  transition: 0.3s;
-}
-
-.switch input:checked + .slider {
-  background: #ff2c6d;
-}
-
-.switch input:checked + .slider::before {
-  transform: translateX(-18px);
-}
-
-/* headers */
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.arrow {
-  transition: transform 0.25s ease;
-}
-
-.arrow.rotate {
-  transform: rotate(180deg);
-}
-
-/* accordion */
-
-.accordion-enter-active,
-.accordion-leave-active {
-  transition: all 0.25s ease;
-  overflow: hidden;
-}
-
-.accordion-enter-from,
-.accordion-leave-to {
-  opacity: 0;
-  max-height: 0;
-}
-
-.accordion-enter-to,
-.accordion-leave-from {
-  opacity: 1;
-  max-height: 300px;
-}
-
-/* radio */
-
-.radio-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-  font-size: 13px;
-}
-
-.radio-item input {
-  display: none;
-}
-
-.custom-radio {
-  width: 16px;
-  height: 16px;
-  border: 2px solid #aaa;
-  border-radius: 50%;
-  position: relative;
-}
-
-.radio-item input:checked + .custom-radio::after {
-  content: "";
   width: 8px;
   height: 8px;
   background: #ff2c6d;
-  border-radius: 50%;
-  position: absolute;
+  border-radius: 9999px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  opacity: 0;
+}
+input:checked + .radio-dot::after {
+  opacity: 1;
 }
 
-/* checkbox */
-
-.checkbox-item {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 12px;
-  align-items: center;
-}
-
-.checkbox-item .right {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.checkbox-item input {
+/* checkbox tick */
+.checkbox-box::after {
+  content: "✓";
+  font-size: 11px;
+  color: white;
   display: none;
 }
-
-.custom-checkbox {
-  width: 16px;
-  height: 16px;
-  border: 2px solid #aaa;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.checkbox-item input:checked + .custom-checkbox {
+input:checked + .checkbox-box {
   background: #ff2c6d;
 }
-
-.checkbox-item input:checked + .custom-checkbox::after {
-  content: "✓";
-  color: white;
-  font-size: 11px;
-}
-
-/* badge */
-
-.badge {
-  min-width: 26px;
-  height: 26px;
-  font-size: 11px;
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.badge.dark {
-  background: #1e2430;
-}
-
-.badge.pink {
-  background: #ff2c6d;
+input:checked + .checkbox-box::after {
+  display: block;
 }
 </style>
